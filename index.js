@@ -8,46 +8,20 @@ app.use(express.json())
 
 app.get("/", (request, response) => {
     response.json({
-        message: "Servidor do ToDo"
-    })
-})
-
-app.get("/active-tasks", (request, response) => {
-    const selectCommand = "SELECT * FROM ToDo_LuizF WHERE status = 0"
-
-    sql.query(selectCommand, (error, data) => {
-        if(error) {
-            console.log(error)
-            return
-        }
-
-        response.json(status)
-    })
-})
-
-app.get("/completed-tasks", (request, response)=> {
-    const selectCommand = "SELECT * FROM ToDo_LuizF WHERE status = 1"
-
-    sql.query(selectCommand, (error, data) => {
-        if(error) {
-            console.log(error)
-            return
-        }
-
-        response.json(status)
+        message: "CRUD de filmes"
     })
 })
 
 app.get("/all-films", (request, response) => {
     const selectCommand = "SELECT * FROM filmes_LuizAkemi"
 
-    sql.query(selectCommand, (error, data) => {
+    sql.query(selectCommand, (error, titulo) => {
         if(error) {
             console.log(error)
             return
         }
 
-        response.json(status)
+        response.json(titulo)
     })
 })
 
@@ -63,13 +37,30 @@ app.post("/create-film", (request, response) => {
         }
 
         response.status(201).json({
-            message: "Filme cadastrado!"
+            message: "Filme cadastrado seu bosta!"
+        })
+    })
+})
+
+app.delete("/delete-film/:id", (request,response)=> {
+    const {id} = request.params
+
+    const deleteCommand = "DELETE FROM filmes_LuizAkemi WHERE id = ?"
+
+    sql.query(deleteCommand, [id], (error) => {
+        if(error) {
+            console.log(error)
+            return
+        }
+
+        response.json({
+            message: "Filme deletado seu bosta!"
         })
     })
 })
 
 app.listen(3000, () => {
-    console.log("Servidor do ToDo FUNCIONANDO")
+    console.log("CRUD de filmes funcionando babaca!")
 })  
 
 const sql = mysql2.createPool({

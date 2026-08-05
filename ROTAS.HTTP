@@ -2,7 +2,7 @@ GET http://localhost:3000/
 
 ###
 
-GET http://localhost:3000/active-tasks
+GET http://localhost:3000/all-films
 
 ###
 
@@ -12,6 +12,10 @@ Content-Type: application/json
 {
     "titulo": "Uma tarefa qualquer2",
     "genero": "cu2",
-    "duracao": "1",
+    "duracao": "1h 30min",
     "classificacao": "12"
 }
+
+###
+
+DELETE http://localhost:3000/delete-film/1
