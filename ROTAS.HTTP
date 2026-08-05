@@ -19,3 +19,15 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:3000/delete-film/1
+
+###
+
+PUT http://localhost:3000/update-film/2
+Content-Type: application/json
+
+{
+    "titulo": "Para todos os garotos que ja amei",
+    "genero": "romance",
+    "duracao": "2h",
+    "classificacao": "16"
+}

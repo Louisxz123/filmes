@@ -59,6 +59,36 @@ app.delete("/delete-film/:id", (request,response)=> {
     })
 })
 
+app.put("/update-film/:id", (request, response) => {
+    const { id } = request.params
+    const { titulo, genero, duracao, classificacao } = request.body
+
+    let updateCommand
+    let valores
+    
+    if(titulo && genero && duracao && classificacao) {
+    updateCommand = "UPDATE filmes_LuizAkemi SET titulo = ?, genero = ?, duracao = ?, classificacao = ? WHERE id = ?"
+    valores = [titulo, genero, duracao, classificacao, id]
+
+     } else if(titulo && genero && duracao) {
+        updateCommand = "UPDATE filmes_LuizAkemi SET titulo = ?, genero = ?, duracao = ? WHERE id = ?"
+        valores = [titulo, genero, duracao, id]
+        } else {
+        return response.status(400).json({ error: "Envie pelo menos titulo, genero, duracao e faixa etaria" })
+    }
+
+    sql.query(updateCommand, valores, (error) => {
+        if(error) {
+            console.log(error)
+            return response.status(500).json({ error: "Erro ao atualizar o filme" })
+        }
+
+        response.json({
+            message: "Filme atualizado com sucesso!"
+        })
+    })
+})
+
 app.listen(3000, () => {
     console.log("CRUD de filmes funcionando babaca!")
 })  
