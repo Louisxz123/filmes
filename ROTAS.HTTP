@@ -10,6 +10,8 @@ POST http://localhost:3000/create-film
 Content-Type: application/json
 
 {
-    "description": "Uma tarefa qualquer",
-    "status": 0
+    "titulo": "Uma tarefa qualquer2",
+    "genero": "cu2",
+    "duracao": "1",
+    "classificacao": "12"
 }

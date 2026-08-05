@@ -52,11 +52,11 @@ app.get("/all-films", (request, response) => {
 })
 
 app.post("/create-film", (request, response) => {
-    const {description, status} = request.body
+    const {titulo, genero, duracao, classificacao} = request.body
 
-    const insertCommand = "INSERT INTO filmes_LuizAkemi(description, status) VALUES (?, ?)"
+    const insertCommand = "INSERT INTO filmes_LuizAkemi(titulo, genero, duracao, classificacao) VALUES (?, ?, ?, ?)"
 
-    sql.query(insertCommand, [description, status], (error) => {
+    sql.query(insertCommand, [titulo, genero, duracao, classificacao], (error) => {
         if(error) {
             console.log(error)
             return
