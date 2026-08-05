@@ -1,0 +1,15 @@
+GET http://localhost:3000/
+
+###
+
+GET http://localhost:3000/active-tasks
+
+###
+
+POST http://localhost:3000/create-film
+Content-Type: application/json
+
+{
+    "description": "Uma tarefa qualquer",
+    "status": 0
+}

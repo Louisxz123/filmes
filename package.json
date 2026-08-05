@@ -1,0 +1,25 @@
+{
+  "name": "crud-filmes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Louisxz123/filmes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Louisxz123/filmes/issues"
+  },
+  "homepage": "https://github.com/Louisxz123/filmes#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "mysql2": "^3.23.2"
+  }
+}
