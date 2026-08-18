@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Filmes</h1>
+
+    <section class="filmes">
+    <style>
+        *{
+        font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+        text-align: center;
+        }
+
+        .filmes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        }
+
+        div {
+        border: 1px solid black;
+        width: 300px;
+        height: 200px;
+        padding: 10px;
+        }
+    </style>
+    </section>
+
+    <script src="script.js">
+        async function buscarFilmes() {
+    // acessar a rota GET do backend, trazer os filmes e mostrar os filmes na tela
+    const resposta = await fetch("http://localhost:3000") // resposta do backend
+    const filmes = await resposta.json() // converte a resposta num objeto JS
+    const sectionFilmes = document.querySelector(".filmes")
+
+    filmes.forEach((filme) => {
+        console.log(filme)
+        sectionFilmes.innerHTML += `
+                    <div>
+                        <h2>${filme.title}</h2>
+                        <p><strong>Gênero:</strong> ${filme.gender}</p>
+                        <p><strong>Duração:</strong> ${filme.duration} minutos</p>
+                        <p><strong>Classificação indicativa:</strong> ${filme.ageLimit > 0 ? filme.ageLimit + ' anos' : 'Livre'}</p>
+                    </div>
+                `
+    })
+}
+
+buscarFilmes()
+    </script>
+</body>
+</html>
