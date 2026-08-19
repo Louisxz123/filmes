@@ -1,44 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filmes</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filmes</title>
+
+<style>
+* {
+font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+text-align: center;
+}
+
+.filmes {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 20px;
+}
+
+div {
+border: 1px solid black;
+width: 300px;
+height: 200px;
+padding: 10px;
+}
+
+</style>
 </head>
+
 <body>
-    <h1>Filmes</h1>
+
+    <h1> Filmes Luiz Felippe e Sophia Akemi </h1>
 
     <section class="filmes">
-    <style>
-        *{
-        font-family: Arial, Helvetica, sans-serif;
-        }
-
-        h1 {
-        text-align: center;
-        }
-
-        .filmes {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        }
-
-        div {
-        border: 1px solid black;
-        width: 300px;
-        height: 200px;
-        padding: 10px;
-        }
-    </style>
     </section>
 
-    <script src="script.js">
-        async function buscarFilmes() {
+<script>
+async function buscarFilmes() {
     // acessar a rota GET do backend, trazer os filmes e mostrar os filmes na tela
-    const resposta = await fetch("http://localhost:3000") // resposta do backend
+    const resposta = await fetch("http://localhost:3000/all-films") // resposta do backend
     const filmes = await resposta.json() // converte a resposta num objeto JS
     const sectionFilmes = document.querySelector(".filmes")
 
@@ -46,16 +49,16 @@
         console.log(filme)
         sectionFilmes.innerHTML += `
                     <div>
-                        <h2>${filme.title}</h2>
-                        <p><strong>Gênero:</strong> ${filme.gender}</p>
-                        <p><strong>Duração:</strong> ${filme.duration} minutos</p>
-                        <p><strong>Classificação indicativa:</strong> ${filme.ageLimit > 0 ? filme.ageLimit + ' anos' : 'Livre'}</p>
+                        <h2>${filme.titulo}</h2>
+                        <p><strong>Gênero:</strong> ${filme.genero}</p>
+                        <p><strong>Duração:</strong> ${filme.duracao} minutos</p>
+                        <p><strong>Classificação indicativa:</strong> ${filme.classificacao > 0 ? filme.classificacao + ' anos' : 'Livre'}</p>
                     </div>
                 `
     })
 }
 
 buscarFilmes()
-    </script>
+</script>
 </body>
 </html>
